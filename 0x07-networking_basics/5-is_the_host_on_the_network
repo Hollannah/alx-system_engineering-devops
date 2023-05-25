@@ -4,12 +4,11 @@
 
 if ! (( $# ))
 then
-  printf 'Usage: %s {IP_ADDRESS}\n' "${0##*/}"
-  exit 2
+	printf 'Usage: %s {IP_ADDRESS}\n' "${0##*/}"
+	exit 2
 fi
-
 while (( $# ))
 do
-  ping -c 5 -- "$1"
-  shift
+	ping -c 5 -- "$1"
+	shift
 done
