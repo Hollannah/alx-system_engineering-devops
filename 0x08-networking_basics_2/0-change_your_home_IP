@@ -4,19 +4,19 @@
 
 if (( ${UID:-$(id -u)} ))
 then
-	echo 'Must be run as root'
-	exit 1
+  echo 'Must be run as root'
+  exit 1
 fi
 
 if ! tempfile="$(mktemp)"
 then
-	echo 'Unable to create temporary file'
-	exit 1
+  echo 'Unable to create temporary file'
+  exit 1
 fi
 
 { printf '%s\t%s\n' 127.0.0.2 localhost
-	printf '%s\t%s\n' 8.8.8.8   facebook.com
-	cat /etc/hosts
+  printf '%s\t%s\n' 8.8.8.8   facebook.com
+  cat /etc/hosts
 } > "${tempfile}"
 
 cat -- "${tempfile}" > /etc/hosts
